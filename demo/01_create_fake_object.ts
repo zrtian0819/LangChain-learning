@@ -14,7 +14,7 @@ const ollamaService = OllamaService.getInstance();
 const model = ollamaService.getModel();
 
 // 更改model中的temperature參數，讓生成的資料更有隨機性
-model.temperature = 0.7;
+model.temperature = 0.8;
 
 // --- 後面的 Parser 和 Prompt 邏輯完全不用改 ---
 const parser = StructuredOutputParser.fromZodSchema(

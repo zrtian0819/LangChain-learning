@@ -68,8 +68,20 @@ bun install
 
 確保 Ollama 服務已啟動（見上面的第 3 步），然後執行：
 
+### Demo 1: 基礎結構化輸出
+
+生成隨機開發者資料的基礎示範：
+
 ```bash
-bun run demo/index.ts
+bun run demo/01_create_fake_object.ts
+```
+
+### Demo 2: LCEL 優雅鏈結
+
+使用 LCEL (LangChain Expression Language) 優雅地串接各個組件：
+
+```bash
+bun run demo/02_lcel_chain.ts
 ```
 
 或使用開發模式：
