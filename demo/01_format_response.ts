@@ -1,7 +1,8 @@
 /** 
-* 這個檔案示範了如何使用 Ollama 來創建一個假的開發者資料物件，並且解析它的內容。
+* 此檔案用於示範如何透過 Zod Schema 來規範 AI 回傳的 JSON 結構，
+* 避免 AI 回傳文字串而不是結構化的資料。
 * 
-* 執行指令: bun run demo/01_create_fake_object.ts
+* 執行指令: bun run demo/01_format_response.ts
 */ 
 
 import OllamaService from "../service/OllamaService";
