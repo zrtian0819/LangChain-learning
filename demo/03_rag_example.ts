@@ -56,8 +56,9 @@ async function runRAG() {
 
     // 定義問題
     const questions = [
-      "React 的最佳實踐中，關於 State 管理有哪些建議？",
-      "如何避免 React 中常見的效能問題？",
+      "請列出 2026 年桃園必去的 3 個旅遊景點",
+      "中原文創園區的營業時間是？它有什麼特色活動？",
+      "如果我想去看水族館，應該去哪裡？它有什麼特別的體驗？",
     ];
 
     // 處理每個問題
@@ -75,15 +76,20 @@ async function runRAG() {
       console.log(`✅ 找到 ${relevantDocs.length} 個相關片段\n`);
 
       // 2. 使用 LCEL 串接 Prompt + Model + Parser
-      const prompt = PromptTemplate.fromTemplate(`你是一個專業的 React 開發顧問。請根據以下提供的參考資料來回答問題。
-如果資料中沒提到，請說你不知道。
+      const prompt = PromptTemplate.fromTemplate([
+        "你是一位專業的桃園旅遊顧問，對 2026 年桃園的所有景點、交通、美食都非常了解。",
+        "",
+        "請根據以下提供的參考資料來詳細回答旅客的問題。",
+        "如果資料中沒有提到相關信息，請誠實地說你不知道。",
+        "",
+        "參考資料：",
+        "{context}",
+        "",
+        "旅客提問：{question}",
+        "",
+        "請提供實用、詳細且親切的旅遊建議：",
+      ].join("\n"));
 
-參考資料：
-{context}
-
-問題：{question}
-
-請提供清晰、有用的回答：`);
 
       const chain = prompt.pipe(model).pipe(new StringOutputParser());
 
