@@ -1,0 +1,68 @@
+React 最佳實踐指南
+
+React 是現代前端開發的核心框架，以下是開發者必須知道的最佳實踐：
+
+1. 組件設計原則
+
+優先使用函數式組件（Functional Components）而不是類組件。函數式組件更簡潔、更易於測試，並且完全支持 Hooks。
+將組件分解為更小、可重用的單位，每個組件應該只負責一個職責。
+使用 Props 傳遞數據，避免過度的 Props 層級傳遞（Props Drilling），可以考慮使用 Context API 或狀態管理庫。
+
+2. State 管理
+
+使用 useState Hook 管理本地組件狀態。
+對於複雜的狀態邏輯，使用 useReducer Hook 或考慮使用狀態管理庫如 Redux、Zustand 或 Recoil。
+避免在組件中放置太多的狀態，應該提升狀態到合適的層級。
+永遠不要直接修改 state，而是創建新的對象或陣列。
+
+3. 效能最佳化
+
+使用 React.memo 包裝不必要重新渲染的組件。
+使用 useMemo 和 useCallback 緩存計算結果和回調函數。
+實現代碼分割（Code Splitting），使用動態導入和 React.lazy 延遲加載組件。
+使用虛擬列表（Virtual List）處理大量數據的列表。
+
+4. 副作用管理
+
+使用 useEffect Hook 處理副作用，例如數據獲取、訂閱或手動 DOM 修改。
+正確設置依賴陣列以避免無限迴圈。
+在 useEffect 中清理資源，例如取消訂閱或清除計時器。
+
+5. 樣式管理
+
+避免在組件中寫內聯樣式，改用 CSS 模組或 CSS-in-JS 解決方案。
+使用 BEM 或其他命名約定來組織 CSS 類名。
+考慮使用 Tailwind CSS 進行快速開發。
+
+6. 測試
+
+為組件編寫單元測試，使用 Jest 和 React Testing Library。
+測試用戶交互而不是實現細節。
+使用快照測試驗證 UI 沒有意外改變。
+
+7. 安全性
+
+避免使用 dangerouslySetInnerHTML，防止 XSS 攻擊。
+驗證和清理用戶輸入。
+使用 HTTPS 傳輸敏感數據。
+定期更新依賴項以修復安全漏洞。
+
+8. 代碼質量
+
+使用 ESLint 和 Prettier 確保代碼質量和一致性。
+遵循 React 官方的命名約定和模式。
+寫清晰的變量名和函數名。
+添加必要的註釋解釋複雜邏輯。
+
+9. 常見陷阱要避免
+
+不要在 render 方法中創建新的函數或對象（會導致子組件每次都重新渲染）。
+不要忘記在 useEffect 中清理副作用。
+不要在循環、條件語句或嵌套函數中調用 Hooks。
+不要直接修改 props 或狀態，永遠使用不可變模式。
+
+10. 性能監控
+
+使用 React DevTools Profiler 分析組件的渲染性能。
+監控首屏加載時間和交互式時間（TTI）。
+使用 Lighthouse 進行整體性能評估。

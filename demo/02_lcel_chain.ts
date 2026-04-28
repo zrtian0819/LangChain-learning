@@ -64,3 +64,33 @@ async function runChain() {
 }
 
 runChain();
+
+
+/*
+## LCEL 鏈結的組件介紹
+在這個範例中，我們使用了四種不同的組件來構建 LCEL 鏈結：
+
+1. 模型 (Models) —— 「大腦」
+這是最常見的，負責接收文字並產生回應。
+
+範例： model (ChatOpenAI 或 ChatOllama)。
+作用： 接收 Prompt 產生的字串，輸出 AI 的原始訊息（Message）。
+
+2. 解析器 (Parsers) —— 「過濾器」
+負責把 AI 吐出來的一大堆廢話，過濾成我們想要的格式。
+
+範例： parser (StructuredOutputParser, StringOutputParser)。
+作用： 接收 AI 的 Message，輸出成 JSON 物件 或 純文字字串。
+
+3. 提示詞範本 (Prompt Templates) —— 「模具」
+雖然 Prompt 通常放在最開頭，但它也可以放在中間。
+
+範例： promptTemplate。
+作用： 接收前一關傳來的變數，組合成一段新的指令。
+
+4. 自定義函數 (Functions) —— 「加工廠」
+如果你想在中間對資料做一些簡單的處理（例如：把文字全部轉成大寫），你可以放一個簡單的匿名函數。
+
+範例： (input: string) => input.toUpperCase()。
+作用： 接收 A，輸出 B。
+*/ 

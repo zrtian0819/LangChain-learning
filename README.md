@@ -29,12 +29,16 @@
 ollama --version
 ```
 
-### 2. 拉取 gemma4 模型
+### 2. 拉取 gemma4 和 embedding 模型
 
-安裝 Ollama 後，需要下載 `gemma4` 模型到本地。執行以下命令：
+安裝 Ollama 後，需要下載所需的模型到本地：
 
 ```bash
+# 用於文本生成的主模型
 ollama pull gemma4
+
+# 用於 RAG 的 embedding 模型（用於向量化文本）
+ollama pull nomic-embed-text
 ```
 
 > ⚠️ 首次下載可能需要一些時間，請耐心等候模型下載完成
@@ -83,6 +87,21 @@ bun run demo/01_create_fake_object.ts
 ```bash
 bun run demo/02_lcel_chain.ts
 ```
+
+### Demo 3: RAG 完整示範
+
+使用 RAG (Retrieval-Augmented Generation) 從文檔中檢索信息並生成答案：
+
+```bash
+bun run demo/03_rag_example.ts
+```
+
+此演示會：
+- 📂 載入 `demo/info.txt` 中的文檔
+- ✂️ 將文檔分割成小塊以便向量化
+- 🧮 使用 `nomic-embed-text` 模型進行向量化
+- 🔍 根據提問檢索相關的文檔片段
+- 🤖 結合 gemma4 模型生成基於文檔的回答
 
 或使用開發模式：
 
