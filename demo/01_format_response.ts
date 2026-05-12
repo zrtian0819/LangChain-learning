@@ -52,4 +52,6 @@ async function getProfile() {
   }
 }
 
-  await getProfile();
+(async () => {
+   await getProfile();
+})();

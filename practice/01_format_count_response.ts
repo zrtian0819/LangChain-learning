@@ -56,7 +56,9 @@ const getProfile = async (count: number = 1) => {
     }
 }
 
- await getProfile(10);
+ (async () => {
+   await getProfile(10);
+ })();
 
 
  /*

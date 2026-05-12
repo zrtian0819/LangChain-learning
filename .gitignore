@@ -32,3 +32,5 @@ logs/
 # Misc
 .cache/
 coverage/
+
+*.pdf
